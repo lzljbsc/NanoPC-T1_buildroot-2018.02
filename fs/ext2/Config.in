@@ -87,6 +87,12 @@ config BR2_TARGET_ROOTFS_EXT2_MKFS_OPTIONS
 	  option: using it may make the filesystem unreadable by
 	  U-Boot.
 
+config BR2_TARGET_ROOTFS_EXT2_SPARSE_IMG
+	bool "Android sparse image"
+	default n
+	help
+	  Build a Android sparse image of the root filesystem
+
 choice
 	prompt "Compression method"
 	default BR2_TARGET_ROOTFS_EXT2_NONE

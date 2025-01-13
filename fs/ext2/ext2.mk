@@ -43,4 +43,15 @@ endef
 ROOTFS_EXT2_POST_GEN_HOOKS += ROOTFS_EXT2_SYMLINK
 endif
 
+ifeq ($(BR2_TARGET_ROOTFS_EXT2_SPARSE_IMG),y)
+define ROOTFS_EXT2_SPARSE_IMG
+	img2simg $@ $@.sparse \
+	|| { ret=$$?; \
+		 echo "*** The android-sdk-libsparse-utils(img2simg) tool package needs to be installed" 1>&2; \
+		 exit $$ret; \
+	}
+endef
+ROOTFS_EXT2_POST_GEN_HOOKS += ROOTFS_EXT2_SPARSE_IMG
+endif
+
 $(eval $(rootfs))
