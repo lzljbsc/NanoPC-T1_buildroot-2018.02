@@ -10,6 +10,12 @@ define IFUPDOWN_SCRIPTS_LOCALHOST
 		echo ; \
 		echo "auto lo"; \
 		echo "iface lo inet loopback"; \
+		echo ; \
+		echo "auto eth0"; \
+		echo "iface eth0 inet static"; \
+		echo "	address 192.168.0.10"; \
+		echo "	netmask 255.255.255.0"; \
+		echo "	gateway 192.168.0.1"; \
 	) > $(TARGET_DIR)/etc/network/interfaces
 endef
 
